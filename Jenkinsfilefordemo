@@ -10,9 +10,9 @@ echo "Node name is: ${env.NODE_NAME}"
 properties([buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '5', daysToKeepStr: '', numToKeepStr: '5')), pipelineTriggers([pollSCM('* * * * *')])])
 
 try{
-
+sendslacknotifications("STARTED")
 stage('CheckoutCode'){
-  git branch: 'development', credentialsId: '03f25f86-96b1-49d0-9973-0570f6ce9389', url: 'https://github.com/ticlacalvin/maven-web-application.git'  
+git branch: 'development', credentialsId: '03f25f86-96b1-49d0-9973-0570f6ce9389', url: 'https://github.com/ticlacalvin/maven-web-application.git'  
  
 }
 
